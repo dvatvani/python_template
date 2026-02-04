@@ -2,6 +2,8 @@
 
 This repository is a Copier template for bootstrapping modern Python data projects. It generates a ready-to-run repo with a `src/` layout, starter modules, tests, documentation scaffolding, and a reproducible workflow centered on `uv`. It also ships with a Makefile and helper scripts for setup, linting, type checks, tests, docs publishing, releases, and optional Docker builds, plus a Marimo playground so you can explore data without leaving the project structure.
 
+It also includes `AGENTS.md.jinja`, a template for generating project-specific `AGENTS.md` instructions during scaffolding.
+
 Technology rundown:
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
 - [uv](https://docs.astral.sh/uv/) for fast dependency management, virtual environments, and lockfiles, with `uv_build` as the packaging backend.
