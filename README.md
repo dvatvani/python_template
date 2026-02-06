@@ -1,12 +1,18 @@
-# python_uv_template
+# Python Data Project Template (`python_uv_template`)
 
-This repository is a Copier template for bootstrapping modern Python data projects. It generates a ready-to-run repo with a `src/` layout, starter modules, tests, documentation scaffolding, and a reproducible workflow centered on `uv`. It also ships with a Makefile and helper scripts for setup, linting, type checks, tests, docs publishing, releases, and optional Docker builds, plus a Marimo playground so you can explore data without leaving the project structure.
+A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, tests, docs, releases, optional Docker, and a Marimo playground.
 
-It also includes `AGENTS.md.jinja`, a template for generating project-specific `AGENTS.md` instructions during scaffolding.
+If you want the full rationale and trade-offs behind this stack, read the companion article: [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/).
 
-Technology rundown:
+## Why this template
+- Start fast with a clean `src/` layout and starter modules.
+- Keep quality automated with linting, formatting, typing, and tests.
+- Use reproducible environments and lockfiles for reliable builds.
+- Publish docs and releases with built-in helper scripts and Make targets.
+
+## Technology stack
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
-- [uv](https://docs.astral.sh/uv/) for fast dependency management, virtual environments, and lockfiles, with `uv_build` as the packaging backend.
+- [uv](https://docs.astral.sh/uv/) for dependency management, virtual environments, lockfiles, and packaging via `uv_build`.
 - [ruff](https://docs.astral.sh/ruff/) for linting and formatting.
 - [ty](https://docs.astral.sh/ty/) for type checking.
 - `pre-commit` to run hooks before commits.
@@ -17,7 +23,9 @@ Technology rundown:
 - [MkDocs](https://www.mkdocs.org/) for documentation, themed with Material and extended via mkdocstrings for API docs, mkdocs-gen-files for generated pages, mkdocs-literate-nav for Markdown-driven navigation, mkdocs-section-index for clickable section indexes, mkdocs-autorefs for cross-page references, pymdown-extensions for richer Markdown, and mike for versioned docs publishing.
 - [Docker](https://www.docker.com/) for containerized builds.
 - [Commitizen](https://commitizen-tools.github.io/commitizen/) for Conventional Commits, versioning, and changelog automation.
+- `AGENTS.md.jinja` to generate a project-specific `AGENTS.md` during scaffolding and keep coding-agent instructions consistent across projects.
 
+## Quick start
 ### 1. Create the project folder
 
 ```bash
@@ -26,7 +34,6 @@ cd <project_name>
 ```
 
 ### 2. Install [`uv`](https://github.com/astral-sh/uv)
-
 
 Installation instructions are [here](https://docs.astral.sh/uv/getting-started/installation/).
 It's recommended to install the latest version from [github releases](https://github.com/astral-sh/uv/releases).
@@ -44,7 +51,7 @@ uvx copier copy https://github.com/mameli/python_template.git .
 > [!IMPORTANT]
 > Copier always generates a `.copier-answers.yml` file. Commit the file with the other files and **never** change it manually.
 
-#### 4. Setup and first push
+### 4. Setup and first push
 
 ```bash
 git init --initial-branch=main
@@ -55,7 +62,7 @@ git remote add origin <remote_repository_URL>
 git push --set-upstream origin main
 ```
 
-## Project update
+## Update an existing project
 1. Move inside your project and make sure that there are no local changes (in case you have local changes, commit or stash them).
 
 2. Update your project to the latest Git tag of the template with the following command:
