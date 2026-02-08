@@ -19,6 +19,7 @@ If you want the full rationale and trade-offs behind this stack, read the compan
 - `pytest` and `pytest-cov` for tests and coverage.
 - [Marimo](https://marimo.io/) for reactive, reproducible notebooks stored as Python files.
 - [Polars](https://docs.pola.rs/) for fast DataFrame work.
+- [DuckDB](https://duckdb.org/) for in-process analytical SQL queries.
 - [Seaborn](https://seaborn.pydata.org/) for quick statistical visualization.
 - [MkDocs](https://www.mkdocs.org/) for documentation, themed with Material and extended via mkdocstrings for API docs, mkdocs-gen-files for generated pages, mkdocs-literate-nav for Markdown-driven navigation, mkdocs-section-index for clickable section indexes, mkdocs-autorefs for cross-page references, pymdown-extensions for richer Markdown, and mike for versioned docs publishing.
 - [Docker](https://www.docker.com/) for containerized builds.
