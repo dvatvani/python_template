@@ -7,6 +7,7 @@ app = marimo.App(width="wide")
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -145,8 +146,34 @@ def _(pl):
                 "Software",
             ],
             "units": [12, 18, 9, 14, 6, 11, 10, 15, 20, 5, 13, 16],
-            "revenue": [2400, 5400, 1800, 4900, 2100, 2200, 3500, 3000, 6200, 1750, 2600, 5100],
-            "month": ["Jan", "Jan", "Feb", "Jan", "Feb", "Feb", "Jan", "Feb", "Jan", "Jan", "Feb", "Feb"],
+            "revenue": [
+                2400,
+                5400,
+                1800,
+                4900,
+                2100,
+                2200,
+                3500,
+                3000,
+                6200,
+                1750,
+                2600,
+                5100,
+            ],
+            "month": [
+                "Jan",
+                "Jan",
+                "Feb",
+                "Jan",
+                "Feb",
+                "Feb",
+                "Jan",
+                "Feb",
+                "Jan",
+                "Jan",
+                "Feb",
+                "Feb",
+            ],
         }
     )
     sales_df
@@ -164,14 +191,19 @@ def _(pl, sales_df):
             pl.col("revenue").mean().round(2).alias("avg_revenue"),
         )
         .with_columns(
-            (pl.col("total_revenue") / pl.col("total_units")).round(2).alias("revenue_per_unit"),
+            (pl.col("total_revenue") / pl.col("total_units"))
+            .round(2)
+            .alias("revenue_per_unit"),
             pl.col("total_revenue")
             .rank("dense", descending=True)
             .over("region")
             .alias("rank_in_region"),
         )
         .filter(pl.col("rank_in_region") <= 2)
-        .sort(["region", "rank_in_region", "total_revenue"], descending=[False, False, True])
+        .sort(
+            ["region", "rank_in_region", "total_revenue"],
+            descending=[False, False, True],
+        )
     )
     return
 
