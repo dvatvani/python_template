@@ -3,6 +3,10 @@
 set shell := ["bash", "-euc"]
 
 [private]
+default:
+  just --list
+
+[private]
 _sync:
     uv sync
 
