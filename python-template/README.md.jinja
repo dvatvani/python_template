@@ -34,7 +34,7 @@ cd {{project_slug}}
 
 ### 4. Run initial setup
    ```bash
-   make install
+   just install
    ```
 
 Congratulations! You're now ready to use your new project :sparkles:
@@ -45,29 +45,31 @@ The project documentation is generated automatically by parsing the source code,
 
 To initialize the documentation, run:
 ```bash
-make init-docs
+just init-docs
 ```
 
 To publish the generated documentation to GitHub Pages, run:
 ```bash
-make github-pages
+just github-pages
 ```
 
 After publishing, the documentation will be available at `https://{{ github_username }}.github.io/{{project_slug}}/`.
 
-## Makefile commands
+## Justfile commands
 
-- `build` — Runs `scripts/build.sh` to build the project.
-- `install` — Runs `sync` and installs pre-commit hooks.
-- `lint` — Runs `scripts/lint.sh` to lint the code with [ruff](https://github.com/astral-sh/ruff).
-- `init-docs` — Runs `scripts/init-docs.sh` to initialize documentation branch.
-- `github-pages` — Runs `scripts/github-pages.sh` to publish documentation to GitHub Pages.
-- `github-tag` — Runs `scripts/github-tag.sh` to create a GitHub tag.
-- `print-version` — Runs `scripts/print-version.sh` to print the current version.
-- `sync` — Runs `scripts/sync.sh` to synchronize dependencies.
-- `tests` — Runs `scripts/tests.sh` to execute tests.
-- `type-check` — Runs `scripts/type-check.sh` to perform type checking with [ty](https://github.com/astral-sh/ty).
-- `docker-build` — Runs `scripts/docker-build.sh` to build the Docker image.
+Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
+
+- `build` — Remove `dist/` and build the project with `uv build`.
+- `install` — Run `sync` and install pre-commit hooks.
+- `lint` — Check code format and lint with [ruff](https://github.com/astral-sh/ruff).
+- `init-docs` — Initialize the documentation branch (gh-pages).
+- `github-pages` — Publish documentation to GitHub Pages with mike.
+- `github-tag` — Bump version with Commitizen, create a git tag, and push.
+- `print-version` — Print the current project version.
+- `sync` — Synchronize dependencies with `uv sync`.
+- `tests` — Run pytest and remove `__pycache__`/`.pyc` files.
+- `type-check` — Run type checking with [ty](https://github.com/astral-sh/ty).
+- `docker-build` — Build the Docker image.
 
 ## Marimo playground
 

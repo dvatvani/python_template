@@ -8,7 +8,7 @@ If you want the full rationale and trade-offs behind this stack, read the compan
 - Start fast with a clean `src/` layout and starter modules.
 - Keep quality automated with linting, formatting, typing, and tests.
 - Use reproducible environments and lockfiles for reliable builds.
-- Publish docs and releases with built-in helper scripts and Make targets.
+- Publish docs and releases with built-in justfile recipes.
 
 ## Technology stack
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
@@ -56,7 +56,7 @@ uvx copier copy https://github.com/mameli/python_template.git .
 
 ```bash
 git init --initial-branch=main
-make install
+just install
 git add .
 git commit -m "feat: first commit"
 git remote add origin <remote_repository_URL>

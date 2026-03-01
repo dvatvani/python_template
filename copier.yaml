@@ -30,7 +30,7 @@ _message_after_copy: |
     1. Initialize the local directory as a Git repository, setup local environment, add files to version control and commit them:
 
         git init --initial-branch=main
-        make install
+        just install
         git add .
         git commit -m "feat: first commit"
 
