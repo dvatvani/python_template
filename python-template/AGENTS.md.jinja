@@ -4,21 +4,21 @@
 This is a Python package laid out with a `src/`-based import path and supporting tooling for docs and scripts.
 - `src/{{project_slug_underscore}}/` contains the package code (for example `src/{{project_slug_underscore}}/main.py`).
 - `tests/` holds the test suite collected by pytest.
-- `scripts/` contains helper scripts called by the Makefile.
+- `scripts/` contains the Docker build context (`docker/`) and the MkDocs API reference generator (`mkdocs/gen_ref_pages.py`).
 - `docs/` stores documentation sources; `mkdocs.yml` configures the site.
 - `playground/` contains Marimo notebooks.
-- `pyproject.toml` and `Makefile` define tooling, dependencies, and tasks.
+- `pyproject.toml` and `justfile` define tooling, dependencies, and tasks.
 
 ## Build, Test, and Development Commands
-Use `uv` for dependency management and to run tools.
-- `make install` installs dev dependencies and pre-commit hooks.
-- `make sync` synchronizes dependencies via `scripts/sync.sh`.
-- `make lint` runs Ruff linting.
-- `make type-check` runs `ty` for type checking.
-- `make tests` runs `uv run pytest -v` and cleans `__pycache__` files.
-- `make build` runs the build script.
-- `make init-docs` initializes the docs branch; `make github-pages` publishes docs.
-- `make docker-build` builds the Docker image.
+Use `uv` for dependency management and to run tools. Run tasks with `just <recipe>`.
+- `just install` installs dev dependencies and pre-commit hooks.
+- `just sync` synchronizes dependencies.
+- `just lint` runs Ruff format check and linting.
+- `just type-check` runs `ty` for type checking.
+- `just tests` runs `uv run pytest -v` and cleans `__pycache__` files.
+- `just build` builds the project.
+- `just init-docs` initializes the docs branch; `just github-pages` publishes docs.
+- `just docker-build` builds the Docker image.
 - `uv run marimo edit` opens the Marimo notebook editor in `playground/`.
 
 ## Coding Style & Naming Conventions
@@ -26,13 +26,13 @@ Follow standard Python conventions and keep code docstring-friendly for generate
 - Indentation is 4 spaces, no tabs.
 - Use `snake_case` for functions/variables, `PascalCase` for classes, and `UPPER_SNAKE_CASE` for constants.
 - Prefer type hints on public APIs; keep docstrings up to date for `mkdocstrings`.
-- Run `make lint` before opening a pull request.
+- Run `just lint` before opening a pull request.
 
 ## Testing Guidelines
 Pytest is configured in `pyproject.toml` with coverage for `src/` and JUnit/coverage outputs.
 - Place tests in `tests/` and name files `test_*.py`.
 - Both pytest and unittest styles are acceptable (pytest will collect both).
-- Run tests with `make tests`.
+- Run tests with `just tests`.
 
 ## Commit & Pull Request Guidelines
 Git history is not available in this workspace, so no existing commit convention can be summarized here.

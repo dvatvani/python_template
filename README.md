@@ -2,13 +2,17 @@
 
 A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, tests, docs, releases, optional Docker, and a Marimo playground.
 
-If you want the full rationale and trade-offs behind this stack, read the companion article: [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/).
+This project is a fork of https://github.com/mameli/python_template with a few modifications based on personal preference. 
+The key changes in this fork are:
+- Use of Justfile instead of Makefile.
+
+The rationale and trade-offs behind the stack for the parent template can be found in the companion article: [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/).
 
 ## Why this template
 - Start fast with a clean `src/` layout and starter modules.
 - Keep quality automated with linting, formatting, typing, and tests.
 - Use reproducible environments and lockfiles for reliable builds.
-- Publish docs and releases with built-in helper scripts and Make targets.
+- Publish docs and releases with built-in justfile recipes.
 
 ## Technology stack
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
@@ -56,7 +60,7 @@ uvx copier copy https://github.com/mameli/python_template.git .
 
 ```bash
 git init --initial-branch=main
-make install
+just install
 git add .
 git commit -m "feat: first commit"
 git remote add origin <remote_repository_URL>
