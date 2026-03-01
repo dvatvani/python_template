@@ -1,11 +1,10 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This is a Python package laid out with a `src/`-based import path and supporting tooling for docs and scripts.
+This is a Python package laid out with a `src/`-based import path and supporting tooling.
 - `src/{{project_slug_underscore}}/` contains the package code (for example `src/{{project_slug_underscore}}/main.py`).
 - `tests/` holds the test suite collected by pytest.
-- `scripts/` contains the Docker build context (`docker/`) and the MkDocs API reference generator (`mkdocs/gen_ref_pages.py`).
-- `docs/` stores documentation sources; `mkdocs.yml` configures the site.
+- `scripts/` contains the Docker build context (`docker/`).
 - `playground/` contains Marimo notebooks.
 - `pyproject.toml` and `justfile` define tooling, dependencies, and tasks.
 
@@ -17,15 +16,14 @@ Use `uv` for dependency management and to run tools. Run tasks with `just <recip
 - `just type-check` runs `ty` for type checking.
 - `just tests` runs `uv run pytest -v` and cleans `__pycache__` files.
 - `just build` builds the project.
-- `just init-docs` initializes the docs branch; `just github-pages` publishes docs.
 - `just docker-build` builds the Docker image.
 - `uv run marimo edit` opens the Marimo notebook editor in `playground/`.
 
 ## Coding Style & Naming Conventions
-Follow standard Python conventions and keep code docstring-friendly for generated docs.
+Follow standard Python conventions.
 - Indentation is 4 spaces, no tabs.
 - Use `snake_case` for functions/variables, `PascalCase` for classes, and `UPPER_SNAKE_CASE` for constants.
-- Prefer type hints on public APIs; keep docstrings up to date for `mkdocstrings`.
+- Prefer type hints on public APIs; keep docstrings up to date.
 - Run `just lint` before opening a pull request.
 
 ## Testing Guidelines
@@ -42,4 +40,3 @@ Git history is not available in this workspace, so no existing commit convention
 
 ## Documentation & Configuration Notes
 - Python `>=3.13` is required; `uv` `>=0.8.0` is expected.
-- Documentation is generated from docstrings; keep public APIs documented.
