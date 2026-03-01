@@ -56,7 +56,3 @@ tests: _sync
 # Type-check with ty
 type-check: _sync
     uv run ty check
-
-# Build Docker image
-docker-build: _sync
-    docker build -t {{ project_slug_underscore }}:latest -f scripts/docker/Dockerfile .
