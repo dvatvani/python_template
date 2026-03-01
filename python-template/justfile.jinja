@@ -26,40 +26,6 @@ lint: _sync
     echo "--Linting all sources--"
     uv run ruff check ./src ./tests
 
-# Initialize documentation branch (gh-pages)
-init-docs: _sync
-    #!/usr/bin/env bash
-    set -euo pipefail
-    current_branch="$(git rev-parse --abbrev-ref HEAD)"
-    git checkout --orphan gh-pages
-    git reset --hard
-    git clean -fdx
-    uv venv
-    uv pip install pre-commit
-    uv run pre-commit install || true
-    echo "# Documentation" > README.md
-    git add README.md
-    PRE_COMMIT_ALLOW_NO_CONFIG=1 git commit -m "feat: Initial commit on docs branch" --no-verify --all
-    git push -u origin gh-pages
-    git switch "${current_branch}"
-
-# Publish documentation to GitHub Pages (mike deploy)
-github-pages: _sync
-    #!/usr/bin/env bash
-    set -e
-    echo "Retrieving current project version..."
-    VERSION=$(uv run cz version --project)
-    echo "Current version: ${VERSION}"
-    echo "Generate full changelog"
-    uv run cz changelog
-    echo "List documentation versions..."
-    uv run mike list
-    echo "Deploying ${VERSION} as 'latest' version using mike..."
-    uv run mike deploy --branch gh-pages --push "${VERSION}" latest --update-aliases --alias-type=copy
-    echo "Ensure default version is set to 'latest'..."
-    uv run mike set-default --branch gh-pages --push latest
-    echo 'OK'
-
 # Bump version, create git tag, and push
 github-tag: _sync
     #!/usr/bin/env bash

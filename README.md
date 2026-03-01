@@ -1,6 +1,6 @@
 # Python Data Project Template (`python_uv_template`)
 
-A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, tests, docs, releases, optional Docker, and a Marimo playground.
+A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, tests, releases, optional Docker, and a Marimo playground.
 
 This project is a fork of https://github.com/mameli/python_template with a few modifications based on personal preference. 
 The key changes in this fork are:
@@ -12,7 +12,7 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 - Start fast with a clean `src/` layout and starter modules.
 - Keep quality automated with linting, formatting, typing, and tests.
 - Use reproducible environments and lockfiles for reliable builds.
-- Publish docs and releases with built-in justfile recipes.
+- Publish releases with built-in justfile recipes.
 
 ## Technology stack
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
@@ -25,7 +25,6 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 - [Polars](https://docs.pola.rs/) for fast DataFrame work.
 - [DuckDB](https://duckdb.org/) for in-process analytical SQL queries.
 - [Seaborn](https://seaborn.pydata.org/) for quick statistical visualization.
-- [MkDocs](https://www.mkdocs.org/) for documentation, themed with Material and extended via mkdocstrings for API docs, mkdocs-gen-files for generated pages, mkdocs-literate-nav for Markdown-driven navigation, mkdocs-section-index for clickable section indexes, mkdocs-autorefs for cross-page references, pymdown-extensions for richer Markdown, and mike for versioned docs publishing.
 - [Docker](https://www.docker.com/) for containerized builds.
 - [Commitizen](https://commitizen-tools.github.io/commitizen/) for Conventional Commits, versioning, and changelog automation.
 - `AGENTS.md.jinja` to generate a project-specific `AGENTS.md` during scaffolding and keep coding-agent instructions consistent across projects.

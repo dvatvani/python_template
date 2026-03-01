@@ -39,22 +39,6 @@ cd {{project_slug}}
 
 Congratulations! You're now ready to use your new project :sparkles:
 
-## Documentation
-
-The project documentation is generated automatically by parsing the source code, provided that the code is properly commented with appropriate docstrings.
-
-To initialize the documentation, run:
-```bash
-just init-docs
-```
-
-To publish the generated documentation to GitHub Pages, run:
-```bash
-just github-pages
-```
-
-After publishing, the documentation will be available at `https://{{ github_username }}.github.io/{{project_slug}}/`.
-
 ## Justfile commands
 
 Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
@@ -62,8 +46,6 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 - `build` — Remove `dist/` and build the project with `uv build`.
 - `install` — Run `sync` and install pre-commit hooks.
 - `lint` — Check code format and lint with [ruff](https://github.com/astral-sh/ruff).
-- `init-docs` — Initialize the documentation branch (gh-pages).
-- `github-pages` — Publish documentation to GitHub Pages with mike.
 - `github-tag` — Bump version with Commitizen, create a git tag, and push.
 - `print-version` — Print the current project version.
 - `sync` — Synchronize dependencies with `uv sync`.
