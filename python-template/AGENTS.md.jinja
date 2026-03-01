@@ -4,7 +4,7 @@
 This is a Python package laid out with a `src/`-based import path and supporting tooling for docs and scripts.
 - `src/{{project_slug_underscore}}/` contains the package code (for example `src/{{project_slug_underscore}}/main.py`).
 - `tests/` holds the test suite collected by pytest.
-- `scripts/` contains helper assets (e.g. Dockerfile, mkdocs generators); tasks are in `justfile`.
+- `scripts/` contains the Docker build context (`docker/`) and the MkDocs API reference generator (`mkdocs/gen_ref_pages.py`).
 - `docs/` stores documentation sources; `mkdocs.yml` configures the site.
 - `playground/` contains Marimo notebooks.
 - `pyproject.toml` and `justfile` define tooling, dependencies, and tasks.
