@@ -5,6 +5,7 @@ A Copier template for bootstrapping modern Python data projects with a reproduci
 This project is a fork of https://github.com/mameli/python_template with a few modifications based on personal preference. 
 The key changes in this fork are:
 - Use of Justfile instead of Makefile.
+- Remove MkDocs support
 
 The rationale and trade-offs behind the stack for the parent template can be found in the companion article: [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/).
 
