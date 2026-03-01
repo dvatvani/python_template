@@ -1,11 +1,12 @@
 # Python Data Project Template (`python_uv_template`)
 
-A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, tests, releases, optional Docker, and a Marimo playground.
+A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, tests, releases, and a Marimo playground.
 
 This project is a fork of https://github.com/mameli/python_template with a few modifications based on personal preference. 
 The key changes in this fork are:
 - Use of Justfile instead of Makefile.
 - Remove MkDocs support
+- Remove Docker support
 
 The rationale and trade-offs behind the stack for the parent template can be found in the companion article: [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/).
 
@@ -26,7 +27,6 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 - [Polars](https://docs.pola.rs/) for fast DataFrame work.
 - [DuckDB](https://duckdb.org/) for in-process analytical SQL queries.
 - [Seaborn](https://seaborn.pydata.org/) for quick statistical visualization.
-- [Docker](https://www.docker.com/) for containerized builds.
 - [Commitizen](https://commitizen-tools.github.io/commitizen/) for Conventional Commits, versioning, and changelog automation.
 - `AGENTS.md.jinja` to generate a project-specific `AGENTS.md` during scaffolding and keep coding-agent instructions consistent across projects.
 
