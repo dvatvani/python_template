@@ -4,32 +4,24 @@ set shell := ["bash", "-euc"]
 
 [private]
 default:
-  just --list
+  @just --list
 
-[private]
-_sync:
+# Synchronize dependencies from lockfile
+sync:
     uv sync
 
 # Install dev dependencies and pre-commit hooks
 install: sync
     uv run pre-commit install
 
-# Lint and format-check with ruff
-lint: _sync
-    echo "--Checking code format--"
-    uv run ruff format --check ./src ./tests
-    echo "--Linting all sources--"
-    uv run ruff check ./src ./tests
-
-# Synchronize dependencies from lockfile
-sync:
-    uv sync
-
 # Run tests and remove __pycache__ / .pyc
-tests: _sync
+test: sync
     uv run pytest -v
     find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
-# Type-check with ty
-type-check: _sync
-    uv run ty check
+# Run code quality tools.
+check:
+	@echo "Checking uv lock file consistency with 'pyproject.toml'
+	@uv lock --check
+	@echo "Linting, formatting and type-checking code"
+	@uv run pre-commit run -a
