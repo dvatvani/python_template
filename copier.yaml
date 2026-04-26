@@ -18,11 +18,19 @@ project_description:
     help: Description of the project.
     default: "A python project"
 
+include_marimo:
+    type: bool
+    default: true
+    help: Include marimo notebooks and dependencies in the project.
+
 github_username:
     type: str
     help: GitHub username or organization name.
 
 _subdirectory: python-template
+
+_exclude:
+  - "{% if not include_marimo %}marimo_notebooks{% endif %}"
 
 _message_after_copy: |
     Your project "{{ project_slug }}" has been created successfully!

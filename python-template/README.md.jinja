@@ -51,6 +51,7 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 - `sync` — Synchronize dependencies with `uv sync`.
 - `tests` — Run pytest and remove `__pycache__`/`.pyc` files.
 - `type-check` — Run type checking with [ty](https://github.com/astral-sh/ty).
+{% if include_marimo %}
 
 ## Marimo playground
 
@@ -61,3 +62,4 @@ uv run marimo edit
 ```
 
 This opens the Marimo editor for interactive notebook development.
+{% endif %}

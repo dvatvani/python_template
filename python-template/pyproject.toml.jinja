@@ -9,19 +9,21 @@ version = "0.0.0"
 [dependency-groups]
 dev = [
     "commitizen==4.13.0",
-    "duckdb==1.4.4",
     "importlib-metadata==8.7.1",
     "pre-commit==4.5.1",
     "pytest-cov==7.0.0",
     "pytest==9.0.2",
-    "pyarrow==23.0.0",
     "ruff==0.14.14",
-    "sqlglot==28.10.0",
+    "ty==0.0.14",
     "typing-extensions==4.15.0",
+{% if include_marimo %}
+    "duckdb==1.4.4",
     "marimo==0.19.9",
     "polars==1.37.1",
+    "pyarrow==23.0.0",
     "seaborn==0.13.2",
-    "ty==0.0.14",
+    "sqlglot==28.10.0",
+{% endif %}
 ]
 
 [tool.uv]
