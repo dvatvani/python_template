@@ -50,7 +50,7 @@ If you have already installed `uv`, please ensure you're using the latest versio
 Launch the following command and answer carefully to the prompts:
 
 ```bash
-uvx copier copy https://github.com/mameli/python_template.git .
+uvx copier copy https://github.com/dvatvani/python_template.git .
 ```
 
 > [!IMPORTANT]
