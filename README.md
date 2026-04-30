@@ -31,32 +31,26 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 - `AGENTS.md.jinja` to generate a project-specific `AGENTS.md` during scaffolding and keep coding-agent instructions consistent across projects.
 
 ## Quick start
-### 1. Create the project folder
 
-```bash
-mkdir -p <project_name>
-cd <project_name>
-```
-
-### 2. Install [`uv`](https://github.com/astral-sh/uv)
+### 1. Install [`uv`](https://github.com/astral-sh/uv)
 
 Installation instructions are [here](https://docs.astral.sh/uv/getting-started/installation/).
 It's recommended to install the latest version from [github releases](https://github.com/astral-sh/uv/releases).
 
 If you have already installed `uv`, please ensure you're using the latest version by running `uv self update`.
 
-### 3. Create the project using [copier](https://github.com/copier-org/copier):
+### 2. Create the project using [copier](https://github.com/copier-org/copier):
 
 Launch the following command and answer carefully to the prompts:
 
 ```bash
-uvx copier copy https://github.com/dvatvani/python_template.git .
+uvx copier copy https://github.com/dvatvani/python_template.git <desired_path>
 ```
 
 > [!IMPORTANT]
 > Copier always generates a `.copier-answers.yml` file. Commit the file with the other files and **never** change it manually.
 
-### 4. Setup and first push
+### 3. Setup and first push
 
 ```bash
 git init --initial-branch=main
