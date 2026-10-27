@@ -47,6 +47,7 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 - `check` — Check code format and lint with [ruff](https://github.com/astral-sh/ruff) and [ty](https://github.com/astral-sh/ty) for type checking.
 - `sync` — Synchronize dependencies with `uv sync`.
 - `test` — Run pytest and remove `__pycache__`/`.pyc` files.
+- `update-template` — Pull in the latest changes from the copier template this project was generated from, then re-lock dependencies.
 
 {% if include_marimo %}
 
