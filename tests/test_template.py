@@ -106,6 +106,15 @@ def test_just_recipes_pass(git_project: CopierProject) -> None:
     assert git_project.run("git status --porcelain") == ""
 
 
+def test_commit_msg_hook_enforces_conventional_commits(
+    git_project: CopierProject,
+) -> None:
+    git_project.run("just install")
+    with pytest.raises(RuntimeError, match="commit validation: failed"):
+        git_project.run("git commit --allow-empty -m 'not a conventional commit'")
+    git_project.run("git commit --allow-empty -m 'chore: a conventional commit'")
+
+
 def test_project_builds(git_project: CopierProject) -> None:
     git_project.run("uv build")
     assert sorted(p.name for p in (git_project / "dist").glob("demo_project-*")) == [
