@@ -23,7 +23,7 @@ check:
     @echo "Checking uv lock file consistency with 'pyproject.toml'"
     @uv lock --check
     @echo "Linting, formatting and type-checking code"
-    @uv run pre-commit run -a
+    @uv run pre-commit run --all-files --show-diff-on-failure
 
 # Bump the version, update CHANGELOG.md, then tag and push a release (args are passed to `cz bump`)
 release *args:
