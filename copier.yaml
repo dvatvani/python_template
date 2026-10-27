@@ -19,6 +19,14 @@ project_slug_underscore:
     default: "{{ project_slug.replace('-','_') }}"
     when: false
 
+project_type:
+    type: str
+    help: What kind of project is this?
+    choices:
+        Library: library
+        Command-line app (Typer): cli
+    default: library
+
 # Python version for generated projects. Not a question: bump it here and existing
 # projects pick it up on `just update-template`.
 python_version:

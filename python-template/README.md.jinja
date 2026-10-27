@@ -46,6 +46,14 @@ just install
 ```
 
 Congratulations! You're now ready to use your new project :sparkles:
+{%- if project_type == 'cli' %}
+
+### 5. Run the CLI
+
+```bash
+uv run {{project_slug}} --help
+```
+{%- endif %}
 
 ## Justfile commands
 

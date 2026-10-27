@@ -2,7 +2,11 @@
 
 ## Project Structure & Module Organization
 This is a Python package laid out with a `src/`-based import path and supporting tooling.
+{% if project_type == 'cli' -%}
+- `src/{{project_slug_underscore}}/` contains the package code. `src/{{project_slug_underscore}}/cli.py` defines the Typer app, installed as the `{{project_slug}}` command via `[project.scripts]` in `pyproject.toml`; run it with `uv run {{project_slug}}`.
+{% else -%}
 - `src/{{project_slug_underscore}}/` contains the package code (for example `src/{{project_slug_underscore}}/main.py`).
+{% endif -%}
 - `tests/` holds the test suite collected by pytest.
 - `pyproject.toml` and `justfile` define tooling, dependencies, and tasks.
 

@@ -1,0 +1,13 @@
+"""Command-line interface, installed as the `{{project_slug}}` command."""
+
+import typer
+
+from {{project_slug_underscore}}.example import hello
+
+app = typer.Typer()
+
+
+@app.command()
+def main(name: str = "World") -> None:
+    """Print a greeting."""
+    print(hello(name))
