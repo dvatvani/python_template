@@ -19,6 +19,13 @@ project_slug_underscore:
     default: "{{ project_slug.replace('-','_') }}"
     when: false
 
+# Python version for generated projects. Not a question: bump it here and existing
+# projects pick it up on `just update-template`.
+python_version:
+    type: str
+    default: "3.15"
+    when: false
+
 project_description:
     type: str
     help: Description of the project.
