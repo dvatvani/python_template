@@ -21,7 +21,7 @@ Follow standard Python conventions.
 - Indentation is 4 spaces, no tabs.
 - Use `snake_case` for functions/variables, `PascalCase` for classes, and `UPPER_SNAKE_CASE` for constants.
 - Prefer type hints on public APIs; keep docstrings up to date.
-- Run `just lint` before opening a pull request.
+- Run `just check` and `just test` before opening a pull request; CI (`.github/workflows/ci.yaml`) runs ruff, ty and pytest on every PR and on pushes to `main`.
 
 ## Testing Guidelines
 Pytest is configured in `pyproject.toml` with coverage for `src/` and JUnit/coverage outputs.
