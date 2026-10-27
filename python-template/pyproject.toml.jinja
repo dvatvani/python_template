@@ -42,8 +42,12 @@ pythonpath = [
   "src"
 ]
 
-[tool.ruff]
-respect-gitignore = true
+[tool.ruff.lint]
+# Defaults (pycodestyle errors, pyflakes) plus import sorting, pyupgrade, bugbear,
+# simplifications, ruff-specific, pytest-style and comprehension rules.
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "PT", "C4"]
+# Line length is left to the formatter.
+ignore = ["E501"]
 
 [tool.commitizen]
 version_provider = "uv"
