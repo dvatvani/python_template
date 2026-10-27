@@ -64,8 +64,9 @@ git push --set-upstream origin main
 ## Update an existing project
 1. Move inside your project and make sure that there are no local changes (in case you have local changes, commit or stash them).
 
-2. Update your project to the latest Git tag of the template with the following command:
+2. Pull in the latest version of the template with:
    ```bash
-   uvx copier update --defaults
+   just update-template
    ```
+   This runs `uvx copier update --defaults` (re-using your previous answers) followed by `uv lock`.
 3. Resolve any conflicts and commit the changes.
