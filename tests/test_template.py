@@ -61,6 +61,7 @@ def test_generated_files(project: CopierProject) -> None:
         ".copier-answers.yml",
         ".gitignore",
         ".pre-commit-config.yaml",
+        ".python-version",
         ".github/workflows/ci.yaml",
         ".github/dependabot.yml",
         "AGENTS.md",
@@ -76,6 +77,16 @@ def test_generated_files(project: CopierProject) -> None:
     assert not list(project.path.rglob("*.jinja"))
     assert not (project / ".github/workflows/copier.yaml").exists()
     assert not (project / "marimo_notebooks").exists()
+
+
+def test_python_version_consistent(project: CopierProject) -> None:
+    python_version = (project / ".python-version").read_text().strip()
+    assert python_version.count(".") == 1  # a minor version, e.g. "3.15"
+    pyproject = (project / "pyproject.toml").read_text()
+    assert f'requires-python = "=={python_version}.*"' in pyproject
+    assert (
+        f"Python `{python_version}` is required" in (project / "AGENTS.md").read_text()
+    )
 
 
 def test_answers_recorded(project: CopierProject) -> None:
