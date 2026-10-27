@@ -1,5 +1,7 @@
 """Tests rendering the copier template and checking the generated projects work."""
 
+from pathlib import Path
+
 import pytest
 import yaml
 from pytest_copier.plugin import CopierFixture, CopierProject
@@ -99,6 +101,27 @@ def test_github_config_is_valid(project: CopierProject) -> None:
         "pre-commit",
     }
     assert {u["schedule"]["interval"] for u in dependabot["updates"]} == {"weekly"}
+
+
+def _action_refs(workflow: Path) -> dict[str, str]:
+    """Map each action used in a workflow to its pinned ref, e.g. {"actions/checkout": "v7"}."""
+    jobs = yaml.safe_load(workflow.read_text())["jobs"]
+    uses = [
+        step["uses"] for job in jobs.values() for step in job["steps"] if "uses" in step
+    ]
+    return dict(use.split("@", 1) for use in uses)
+
+
+def test_ci_action_versions_match_template_ci(project: CopierProject) -> None:
+    """Dependabot can't see the generated workflow, so keep it in step with the template's own CI."""
+    template_ci = _action_refs(
+        Path(__file__).parents[1] / ".github/workflows/template-ci.yaml"
+    )
+    generated_ci = _action_refs(project / ".github/workflows/ci.yaml")
+    assert set(generated_ci) <= set(template_ci), (
+        "Use every action in the generated CI in template-ci.yaml too, so Dependabot bumps it"
+    )
+    assert generated_ci == {action: template_ci[action] for action in generated_ci}
 
 
 def test_ci_steps_pass(git_project: CopierProject) -> None:

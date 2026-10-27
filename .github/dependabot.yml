@@ -1,0 +1,34 @@
+# Weekly dependency update PRs for the template repository itself. (This file lives
+# outside `python-template/`, so it is not copied into generated projects; those get
+# `python-template/.github/dependabot.yml`.) See:
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+version: 2
+updates:
+  # The template test suite's tooling (pyproject.toml / uv.lock)
+  - package-ecosystem: uv
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      python-dependencies:
+        patterns: ["*"]
+
+  # Actions used by the template's own CI. Dependabot only reads `/.github/workflows`,
+  # so it can't see `python-template/.github/workflows/ci.yaml`; instead
+  # `test_ci_action_versions_match_template_ci` fails until that file is bumped to match.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # Hook revs shipped in generated projects' .pre-commit-config.yaml
+  - package-ecosystem: pre-commit
+    directory: /python-template
+    schedule:
+      interval: weekly
+    groups:
+      pre-commit-hooks:
+        patterns: ["*"]
