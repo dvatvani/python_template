@@ -1,6 +1,6 @@
-# Python Data Project Template (`python_uv_template`)
+# Python Project Template
 
-A Copier template for bootstrapping modern Python data projects with a reproducible, production-ready workflow: `uv`, `ruff`, `ty`, and tests.
+A Copier template for bootstrapping modern Python projects with a reproducible workflow: `uv`, `ruff`, `ty`, and tests.
 
 This project is a fork of https://github.com/mameli/python_template with a few modifications based on personal preference. 
 The key changes in this fork are:
@@ -15,7 +15,7 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 - Start fast with a clean `src/` layout and starter modules.
 - Keep quality automated with linting, formatting, typing, and tests.
 - Use reproducible environments and lockfiles for reliable builds.
-- Publish releases with built-in justfile recipes.
+- Get GitHub Actions CI and weekly Dependabot updates out of the box.
 
 ## Technology stack
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
