@@ -51,4 +51,4 @@ _message_after_update: |
     In case there are any conflicts, please resolve them. Then,
     you're done.
 
-_min_copier_version: "9.0.0"
+_min_copier_version: "9.19.0"

@@ -65,5 +65,5 @@ git push --set-upstream origin main
    ```bash
    just update-template
    ```
-   This runs `uvx copier update --defaults` (re-using your previous answers) followed by `uv lock`.
+   This runs `uvx copier@latest update --defaults` (re-using your previous answers) followed by `uv lock`.
 3. Resolve any conflicts and commit the changes.
