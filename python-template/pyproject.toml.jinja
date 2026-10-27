@@ -16,14 +16,6 @@ dev = [
     "ruff==0.14.14",
     "ty==0.0.14",
     "typing-extensions==4.15.0",
-{% if include_marimo %}
-    "duckdb==1.4.4",
-    "marimo==0.19.9",
-    "polars==1.37.1",
-    "pyarrow==23.0.0",
-    "seaborn==0.13.2",
-    "sqlglot==28.10.0",
-{% endif %}
 ]
 
 [tool.uv]
@@ -54,7 +46,6 @@ pythonpath = [
 
 [tool.ruff]
 respect-gitignore = true
-extend-exclude = ["marimo_notebooks"]
 
 [tool.commitizen]
 version_provider = "uv"
