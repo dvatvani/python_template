@@ -52,3 +52,7 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 ## Continuous integration
 
 A GitHub Actions workflow (`.github/workflows/ci.yaml`) runs on every pull request update and on every push to `main`. It checks formatting and linting with ruff, type-checks with ty, and runs the test suite with pytest. It installs dependencies with `uv sync --locked`, so remember to commit `uv.lock`.
+
+## Dependency updates
+
+[Dependabot](https://docs.github.com/en/code-security/dependabot) (`.github/dependabot.yml`) checks weekly for updates to Python dependencies (`uv.lock`), GitHub Actions and pre-commit hooks, opening one grouped PR per ecosystem.
