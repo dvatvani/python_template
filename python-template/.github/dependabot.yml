@@ -6,6 +6,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Only touch uv.lock while the lower bounds in pyproject.toml still allow the new
+    # version, so `just update-template` doesn't conflict with bumped bounds.
+    versioning-strategy: increase-if-necessary
     groups:
       python-dependencies:
         patterns: ["*"]
