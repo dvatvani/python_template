@@ -55,6 +55,7 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 - `check` — Check code format and lint with [ruff](https://github.com/astral-sh/ruff) and [ty](https://github.com/astral-sh/ty) for type checking.
 - `sync` — Synchronize dependencies with `uv sync`.
 - `test` — Run the test suite with pytest.
+- `release` — Bump the version, update `CHANGELOG.md` and tag the release with [Commitizen](https://commitizen-tools.github.io/commitizen/) based on the Conventional Commits since the last release, then push the commit and tag.
 - `update-template` — Pull in the latest changes from the copier template this project was generated from, then re-lock dependencies.
 
 ## Continuous integration

@@ -16,6 +16,7 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 - Keep quality automated with linting, formatting, typing, and tests.
 - Use reproducible environments and lockfiles for reliable builds.
 - Get GitHub Actions CI and weekly Dependabot updates out of the box.
+- Cut releases with `just release`: Commitizen bumps the version, updates the changelog and tags the release.
 
 ## Technology stack
 - [Copier](https://copier.readthedocs.io/) for project scaffolding and updateable generation.
