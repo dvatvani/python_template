@@ -1,0 +1,28 @@
+# Tooling for testing the copier template itself. Not copied into generated projects
+# (copier only renders the `python-template/` subdirectory).
+[project]
+name = "python-template-tests"
+version = "0.0.0"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "copier==9.19.1",
+    "pytest==9.1.1",
+    "pytest-copier==0.4.1",
+    "pytest-xdist==3.8.0",
+    "pyyaml==6.0.3",
+    "ruff==0.17.3",
+]
+
+[tool.uv]
+package = false
+required-version = ">=0.13.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra"]
+
+[tool.ruff]
+extend-exclude = ["python-template"]
