@@ -3,7 +3,7 @@ name = "{{project_slug}}"
 description = "{{project_description}}"
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = "=={{python_version}}.*"
-dependencies = []
+dependencies = [{% if project_type == 'cli' %}"typer>=0.27.3"{% endif %}]
 version = "0.0.0"
 
 [dependency-groups]
@@ -25,6 +25,11 @@ system-certs = true # Use the system certificate store
 requires = ["uv_build>=0.13.6,<0.14.0"]
 build-backend = "uv_build"
 
+{% if project_type == 'cli' -%}
+[project.scripts]
+{{project_slug}} = "{{project_slug_underscore}}.cli:app"
+
+{% endif -%}
 [project.urls]
 "Homepage" = "https://github.com/{{github_username}}/{{project_slug}}"
 "Source" = "https://github.com/{{github_username}}/{{project_slug}}"

@@ -13,6 +13,7 @@ The rationale and trade-offs behind the stack for the parent template can be fou
 
 ## Why this template
 - Start fast with a clean `src/` layout and starter modules.
+- Generate either a library or a [Typer](https://typer.tiangolo.com/) command-line app with an installed entry point.
 - Keep quality automated with linting, formatting, typing, and tests.
 - Use reproducible environments and lockfiles for reliable builds.
 - Get GitHub Actions CI and weekly Dependabot updates out of the box.
