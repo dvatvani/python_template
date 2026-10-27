@@ -11,7 +11,7 @@ Use `uv` for dependency management and to run tools. Run tasks with `just <recip
 - `just install` installs dev dependencies and pre-commit hooks.
 - `just sync` synchronizes dependencies.
 - `just check` verifies `uv.lock` is up to date, then runs ruff (format + lint) and `ty` via pre-commit.
-- `just test` runs `uv run pytest -v` and cleans `__pycache__` files.
+- `just test` runs `uv run pytest -v`.
 - `just update-template` pulls in the latest changes from the copier template (requires a clean working tree).
 
 Manage dependencies with `uv add <package>` (or `uv add --dev <package>` for tooling) rather than editing `pyproject.toml` by hand or using `pip`. Run tools with `uv run <tool>`.
