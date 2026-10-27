@@ -10,11 +10,31 @@ This is a Python package laid out with a `src/`-based import path and supporting
 Use `uv` for dependency management and to run tools. Run tasks with `just <recipe>`.
 - `just install` installs dev dependencies and pre-commit hooks.
 - `just sync` synchronizes dependencies.
-- `just lint` runs Ruff format check and linting.
-- `just type-check` runs `ty` for type checking.
-- `just tests` runs `uv run pytest -v` and cleans `__pycache__` files.
-- `just build` builds the project.
+- `just check` verifies `uv.lock` is up to date, then runs ruff (format + lint) and `ty` via pre-commit.
+- `just test` runs `uv run pytest -v` and cleans `__pycache__` files.
 - `just update-template` pulls in the latest changes from the copier template (requires a clean working tree).
+
+Manage dependencies with `uv add <package>` (or `uv add --dev <package>` for tooling) rather than editing `pyproject.toml` by hand or using `pip`. Run tools with `uv run <tool>`.
+
+## Preferred Libraries
+When a task needs functionality beyond the standard library, reach for these libraries first. Only deviate when there is a concrete reason (and say why in the PR).
+
+| Need | Use | Instead of |
+| --- | --- | --- |
+| Command-line interfaces | [Typer](https://typer.tiangolo.com/) | `argparse`, `click` directly |
+| Logging | [loguru](https://loguru.readthedocs.io/) | the stdlib `logging` module |
+| Terminal output beyond trivial `print`s (tables, progress bars, tracebacks, coloured/structured output) | [rich](https://rich.readthedocs.io/) | hand-rolled formatting, `tqdm`, `tabulate` |
+| Runtime type checking / validation of object structures, and JSON/MessagePack (de)serialisation | [msgspec](https://jcristharif.com/msgspec/) (`msgspec.Struct`) | `pydantic`, `marshmallow`, manual `isinstance` checks |
+| Plain data containers that don't need validation | `dataclasses` (stdlib) | ad-hoc dicts and tuples |
+| Statistical data visualisation | [seaborn](https://seaborn.pydata.org/) (on top of matplotlib) | bespoke matplotlib plotting code |
+| DataFrames | [polars](https://docs.pola.rs/) | `pandas` |
+| Analytical SQL over local files/DataFrames | [DuckDB](https://duckdb.org/) | `sqlite3`, loading everything into memory by hand |
+| HTTP clients | [httpx](https://www.python-httpx.org/) | `requests`, `urllib` |
+| Retrying flaky operations | [tenacity](https://tenacity.readthedocs.io/) | hand-written retry loops |
+| Filesystem paths | `pathlib` (stdlib) | `os.path` string manipulation |
+| Tests | `pytest` (fixtures, `parametrize`) | `unittest`-style test classes |
+| Property-based tests | [hypothesis](https://hypothesis.readthedocs.io/) | large hand-written input tables |
+| Notebooks | [marimo](https://marimo.io/) | Jupyter |
 
 ## Coding Style & Naming Conventions
 Follow standard Python conventions.
@@ -26,12 +46,11 @@ Follow standard Python conventions.
 ## Testing Guidelines
 Pytest is configured in `pyproject.toml` with coverage for `src/` and JUnit/coverage outputs.
 - Place tests in `tests/` and name files `test_*.py`.
-- Both pytest and unittest styles are acceptable (pytest will collect both).
-- Run tests with `just tests`.
+- Prefer plain pytest-style test functions; pytest will still collect existing unittest-style tests.
+- Run tests with `just test`.
 
 ## Commit & Pull Request Guidelines
-Git history is not available in this workspace, so no existing commit convention can be summarized here.
-- If you use Commitizen, run `cz` to format commits consistently.
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/); a Commitizen `commit-msg` pre-commit hook enforces this. Run `uv run cz commit` for an interactive prompt.
 - Pull requests should include a concise summary, test results, and any doc updates.
 - Add screenshots for documentation or UI-facing changes when relevant.
 
