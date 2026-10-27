@@ -36,7 +36,15 @@ It's recommended to install the latest version from [github releases](https://gi
 
 If you have already installed `uv`, please ensure you're using the latest version by running `uv self update`.
 
-### 2. Create the project using [copier](https://github.com/copier-org/copier):
+### 2. Install [`just`](https://just.systems/)
+
+`just` runs the generated project's tasks. Install it with your system package manager (e.g. `brew install just`) or via `uv`:
+
+```bash
+uv tool install rust-just
+```
+
+### 3. Create the project using [copier](https://github.com/copier-org/copier):
 
 Launch the following command and answer carefully to the prompts:
 
@@ -47,7 +55,7 @@ uvx copier copy https://github.com/dvatvani/python_template.git <desired_path>
 > [!IMPORTANT]
 > Copier always generates a `.copier-answers.yml` file. Commit the file with the other files and **never** change it manually.
 
-### 3. Setup and first push
+### 4. Setup and first push
 
 ```bash
 git init --initial-branch=main

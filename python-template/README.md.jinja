@@ -24,18 +24,26 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 If you have already installed `uv`, please ensure you're using the latest version by running `uv self update`.
 
-### 2. Clone repository
+### 2. Install [`just`](https://just.systems/)
+
+`just` runs the project's tasks (see the `justfile`). Install it with your system package manager (e.g. `brew install just`) or via `uv`:
+
+```bash
+uv tool install rust-just
+```
+
+### 3. Clone repository
 
 ```bash
 git clone https://github.com/{{ github_username }}/{{project_slug}}
 cd {{project_slug}}
 ```
 
-
 ### 4. Run initial setup
-   ```bash
-   just install
-   ```
+
+```bash
+just install
+```
 
 Congratulations! You're now ready to use your new project :sparkles:
 
