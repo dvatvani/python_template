@@ -20,10 +20,10 @@ test: sync
 
 # Run code quality tools.
 check:
-	@echo "Checking uv lock file consistency with 'pyproject.toml'"
-	@uv lock --check
-	@echo "Linting, formatting and type-checking code"
-	@uv run pre-commit run -a
+    @echo "Checking uv lock file consistency with 'pyproject.toml'"
+    @uv lock --check
+    @echo "Linting, formatting and type-checking code"
+    @uv run pre-commit run -a
 
 # Pull in the latest changes from the copier template and re-lock dependencies
 update-template:

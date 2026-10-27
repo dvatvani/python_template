@@ -1,8 +1,8 @@
-"""Example of code."""
+"""Example module."""
 
 
 def hello(name: str) -> str:
-    """Just an greetings example.
+    """Return a greeting for ``name``.
 
     Args:
         name (str): Name to greet.
