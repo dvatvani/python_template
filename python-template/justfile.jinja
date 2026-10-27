@@ -14,10 +14,9 @@ sync:
 install: sync
     uv run pre-commit install
 
-# Run tests and remove __pycache__ / .pyc
+# Run tests
 test: sync
     uv run pytest -v
-    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 # Run code quality tools.
 check:
