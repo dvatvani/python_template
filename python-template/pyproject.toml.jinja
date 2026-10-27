@@ -7,13 +7,14 @@ dependencies = []
 version = "0.0.0"
 
 [dependency-groups]
+# Lower bounds only: exact versions are pinned in uv.lock (and bumped by Dependabot).
 dev = [
-    "commitizen==4.19.3",
-    "pre-commit==4.7.0",
-    "pytest-cov==7.1.0",
-    "pytest==9.1.1",
-    "ruff==0.17.3",
-    "ty==0.0.92",
+    "commitizen>=4.19.3",
+    "pre-commit>=4.7.0",
+    "pytest-cov>=7.1.0",
+    "pytest>=9.1.1",
+    "ruff>=0.17.3",
+    "ty>=0.0.92",
 ]
 
 [tool.uv]
