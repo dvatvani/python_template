@@ -63,6 +63,12 @@ git init --initial-branch=main
 just install
 git add .
 git commit -m "feat: first commit"
+gh repo create <github_username>/<project_slug> --private --source=. --push
+```
+
+If you don't use the [GitHub CLI](https://cli.github.com/), create the repository on github.com and push to it instead:
+
+```bash
 git remote add origin <remote_repository_URL>
 git push --set-upstream origin main
 ```
