@@ -60,7 +60,7 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 
 ## Continuous integration
 
-A GitHub Actions workflow (`.github/workflows/ci.yaml`) runs on every pull request update and on every push to `main`. It checks formatting and linting with ruff, type-checks with ty, and runs the test suite with pytest. It installs dependencies with `uv sync --locked`, so remember to commit `uv.lock`.
+A GitHub Actions workflow (`.github/workflows/ci.yaml`) runs on every pull request update and on every push to `main`. It runs `just check` (the same pre-commit hooks as locally: ruff formatting and linting, ty type checking and file hygiene checks) and the test suite with pytest. It installs dependencies with `uv sync --locked`, so remember to commit `uv.lock`.
 
 ## Dependency updates
 

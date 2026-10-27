@@ -19,14 +19,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.3.2
+      - uses: extractions/setup-just@v4
       - name: Install dependencies
         run: uv sync --locked
-      - name: Check formatting (ruff)
-        run: uv run ruff format --check
-      - name: Lint (ruff)
-        run: uv run ruff check
-      - name: Type check (ty)
-        run: uv run ty check
+      # Same checks as running `just check` locally (lockfile, pre-commit hooks)
+      - name: Lint, format & type check
+        run: just check
 
   test:
     name: Tests

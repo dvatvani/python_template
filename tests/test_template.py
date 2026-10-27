@@ -136,12 +136,16 @@ def test_ci_action_versions_match_template_ci(project: CopierProject) -> None:
 
 
 def test_ci_steps_pass(git_project: CopierProject) -> None:
-    """Run the same commands as the generated project's CI workflow."""
-    git_project.run("uv sync --locked")
-    git_project.run("uv run ruff format --check")
-    git_project.run("uv run ruff check")
-    git_project.run("uv run ty check")
-    assert "1 passed" in git_project.run("uv run pytest")
+    """Run every `run` step of the generated project's CI workflow, job by job."""
+    jobs = yaml.safe_load((git_project / ".github/workflows/ci.yaml").read_text())[
+        "jobs"
+    ]
+    commands = [
+        step["run"] for job in jobs.values() for step in job["steps"] if "run" in step
+    ]
+    assert "just check" in commands
+    outputs = [git_project.run(command) for command in commands]
+    assert "1 passed" in outputs[-1]
 
 
 def test_just_recipes_pass(git_project: CopierProject) -> None:
