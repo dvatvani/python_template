@@ -34,29 +34,28 @@ project_description:
 github_username:
     type: str
     help: GitHub username or organization name.
+    default: dvatvani
 
 _subdirectory: python-template
 
 _message_after_copy: |
     Your project "{{ project_slug }}" has been created successfully!
 
-    1. Initialize the local directory as a Git repository, setup local environment, add files to version control and commit them:
+    1. Set up the local environment and make the first commit:
 
+        cd {{ _copier_conf.dst_path }}
         git init --initial-branch=main
         just install
         git add .
         git commit -m "feat: first commit"
 
-    2. Copy the URL of your GitHub repository and run:
+    2. Create the GitHub repository and push to it with the GitHub CLI:
+
+        gh repo create {{ github_username }}/{{ project_slug }} --private --source=. --push
+
+       Or create the repository on github.com and run:
 
         git remote add origin https://github.com/{{ github_username }}/{{ project_slug }}.git
-
-    3. You can verify your new remote URL running:
-
-        git remote -v
-
-    4. Now you can push your local files to GitHub.
-
         git push --set-upstream origin main
 
 _message_after_update: |
