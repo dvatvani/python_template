@@ -28,19 +28,18 @@ build-backend = "uv_build"
 "Homepage" = "https://github.com/{{github_username}}/{{project_slug}}"
 "Source" = "https://github.com/{{github_username}}/{{project_slug}}"
 
-[tool.pytest.ini_options]
+[tool.pytest]
 testpaths = ["tests"]
+# Error on unknown markers/config keys and treat unexpected xfail passes as failures
+strict = true
 addopts = [
-    "--cov=src/",
-    "--cov-report=xml",
+    "-ra",
+    "--cov={{project_slug_underscore}}",
     "--cov-report=term-missing",
-    "--junitxml=report.xml",
 ]
-# https://stackoverflow.com/a/50610630
-pythonpath = [
-  ".",
-  "src"
-]
+
+[tool.coverage.run]
+branch = true
 
 [tool.ruff.lint]
 # Defaults (pycodestyle errors, pyflakes) plus import sorting, pyupgrade, bugbear,

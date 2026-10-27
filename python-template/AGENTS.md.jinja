@@ -44,7 +44,7 @@ Follow standard Python conventions.
 - Run `just check` and `just test` before opening a pull request; CI (`.github/workflows/ci.yaml`) runs ruff, ty and pytest on every PR and on pushes to `main`.
 
 ## Testing Guidelines
-Pytest is configured in `pyproject.toml` with coverage for `src/` and JUnit/coverage outputs.
+Pytest is configured in `pyproject.toml` (strict mode, with branch coverage of the package reported in the terminal).
 - Place tests in `tests/` and name files `test_*.py`.
 - Prefer plain pytest-style test functions; pytest will still collect existing unittest-style tests.
 - Run tests with `just test`.
