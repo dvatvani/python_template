@@ -84,3 +84,5 @@ just test
 ```
 
 Lint the test suite itself with `just check`.
+
+Both run in CI (`.github/workflows/template-ci.yaml`) on every pull request and on pushes to `main`.
