@@ -20,8 +20,9 @@ dev = [
 package = false
 required-version = ">=0.13.0"
 
-[tool.pytest.ini_options]
+[tool.pytest]
 testpaths = ["tests"]
+strict = true
 addopts = ["-ra"]
 
 [tool.ruff]
