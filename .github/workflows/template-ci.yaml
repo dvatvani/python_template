@@ -1,0 +1,30 @@
+name: Template CI
+
+# Checks that changes to the template don't break projects generated from it.
+# (This workflow lives outside `python-template/`, so it is not copied into generated projects.)
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    name: Render & test generated projects
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.2
+      - uses: extractions/setup-just@v4
+      - name: Lint template test suite
+        run: just check
+      - name: Run template tests
+        run: just test
