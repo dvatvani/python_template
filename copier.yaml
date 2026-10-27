@@ -2,6 +2,12 @@ package_name:
     type: str
     placeholder: YOUR-PROJECT-NAME
     help: Name of the Python package.
+    # Must map to a valid PyPI project name and Python module name once spaces and
+    # underscores are normalised (see project_slug / project_slug_underscore below).
+    validator: >-
+        {% if not (package_name | regex_search('^[A-Za-z]([A-Za-z0-9 _-]*[A-Za-z0-9])?$')) %}
+        Must start with a letter, end with a letter or digit, and contain only letters, digits, spaces, hyphens and underscores.
+        {% endif %}
 
 project_slug:
     type: str
