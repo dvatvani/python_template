@@ -48,3 +48,7 @@ Run tasks with `just <recipe>`. All commands are defined in-place in `justfile`.
 - `sync` — Synchronize dependencies with `uv sync`.
 - `test` — Run pytest and remove `__pycache__`/`.pyc` files.
 - `update-template` — Pull in the latest changes from the copier template this project was generated from, then re-lock dependencies.
+
+## Continuous integration
+
+A GitHub Actions workflow (`.github/workflows/ci.yaml`) runs on every pull request update and on every push to `main`. It checks formatting and linting with ruff, type-checks with ty, and runs the test suite with pytest. It installs dependencies with `uv sync --locked`, so remember to commit `uv.lock`.
