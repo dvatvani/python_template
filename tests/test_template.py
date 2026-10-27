@@ -42,6 +42,18 @@ def test_package_name_derivation(
     )
 
 
+@pytest.mark.parametrize(
+    "package_name", ["", "2fast", "my.project", "my project!", "-demo", "demo_"]
+)
+def test_invalid_package_name_rejected(
+    copier: CopierFixture, tmp_path, package_name: str
+) -> None:
+    with pytest.raises(
+        ValueError, match="Validation error for question 'package_name'"
+    ):
+        copier.copy(tmp_path / "project", package_name=package_name)
+
+
 def test_generated_files(project: CopierProject) -> None:
     for path in [
         ".copier-answers.yml",
