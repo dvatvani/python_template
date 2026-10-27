@@ -25,6 +25,11 @@ check:
     @echo "Linting, formatting and type-checking code"
     @uv run pre-commit run -a
 
+# Bump the version, update CHANGELOG.md, then tag and push a release (args are passed to `cz bump`)
+release *args:
+    uv run cz bump {% raw %}{{args}}{% endraw %}
+    git push --follow-tags
+
 # Pull in the latest changes from the copier template and re-lock dependencies
 update-template:
     uvx copier@latest update --defaults

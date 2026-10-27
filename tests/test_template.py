@@ -158,6 +158,25 @@ def test_project_builds(git_project: CopierProject) -> None:
     ]
 
 
+def test_release_recipe(git_project: CopierProject, tmp_path) -> None:
+    remote = tmp_path / "remote.git"
+    git_project.run(f"git init --bare {remote}")
+    git_project.run(f"git remote add origin {remote}")
+    git_project.run("git push --set-upstream origin main")
+    git_project.run("just install")
+
+    git_project.run("git commit --allow-empty -m 'feat: add a feature'")
+    git_project.run("just release --yes")
+
+    assert 'version = "0.1.0"' in (git_project / "pyproject.toml").read_text()
+    assert "## v0.1.0" in (git_project / "CHANGELOG.md").read_text()
+    assert git_project.run(f"git -C {remote} tag") == "v0.1.0\n"
+    assert git_project.run(f"git -C {remote} log -1 --format=%s") == (
+        "bump: version 0.0.0 → 0.1.0\n"
+    )
+    assert git_project.run("git status --porcelain") == ""
+
+
 def test_update_template_recipe(git_project: CopierProject) -> None:
     """Updating to the same template version should succeed and change nothing."""
     git_project.run("just update-template")
