@@ -67,3 +67,20 @@ git push --set-upstream origin main
    ```
    This runs `uvx copier@latest update --defaults` (re-using your previous answers) followed by `uv lock`.
 3. Resolve any conflicts and commit the changes.
+
+## Developing the template
+
+The template has its own test suite (in `tests/`, using [pytest-copier](https://github.com/noirbizarre/pytest-copier)) which renders projects from the current working copy and checks that they:
+- contain the expected files and correctly derived names,
+- pass the same ruff / ty / pytest steps as the generated CI workflow,
+- pass `just install`, `just check` and `just test`,
+- build with `uv build`, and
+- can run `just update-template` cleanly.
+
+Requires [`uv`](https://docs.astral.sh/uv/) and [`just`](https://just.systems/). Run the suite with:
+
+```bash
+just test
+```
+
+Lint the test suite itself with `just check`.
