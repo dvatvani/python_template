@@ -96,4 +96,4 @@ Both run in CI (`.github/workflows/template-ci.yaml`) on every pull request and 
 
 ## Acknowledgements
 
-This template was originally based on [mameli/python_template](https://github.com/mameli/python_template), a template for data-science projects. Its companion article, [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/), explains the reasoning behind many of the core tooling choices that carried over.
+This template was originally based on [mameli/python_template](https://github.com/mameli/python_template).
