@@ -2,15 +2,6 @@
 
 A Copier template for bootstrapping modern Python projects with a reproducible workflow: `uv`, `ruff`, `ty`, and tests.
 
-This project is a fork of https://github.com/mameli/python_template with a few modifications based on personal preference. 
-The key changes in this fork are:
-- Use of Justfile instead of Makefile.
-- Remove MkDocs support
-- Remove Docker support
-- Remove the bundled Marimo notebook and data-science dependencies (add them per-project as needed)
-
-The rationale and trade-offs behind the stack for the parent template can be found in the companion article: [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/).
-
 ## Why this template
 - Start fast with a clean `src/` layout and starter modules.
 - Generate either a library or a [Typer](https://typer.tiangolo.com/) command-line app with an installed entry point.
@@ -102,3 +93,7 @@ just test
 Lint the test suite itself with `just check`.
 
 Both run in CI (`.github/workflows/template-ci.yaml`) on every pull request and on pushes to `main`.
+
+## Acknowledgements
+
+This template was originally based on [mameli/python_template](https://github.com/mameli/python_template), a template for data-science projects. Its companion article, [A Modern Python Stack for Data Projects](https://www.mameli.dev/blog/modern-data-python-stack/), explains the reasoning behind many of the core tooling choices that carried over.
